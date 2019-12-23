@@ -12,6 +12,8 @@ import asyncio
 from nio import (AsyncClient, RoomMessageText)
 import json
 import sys
+import urllib.request
+import os
 
 with open('login.json') as loginfile:
     logindata = json.load(loginfile)
@@ -21,31 +23,44 @@ with open('faq.json') as faqfile:
 
 client = AsyncClient(logindata["homeserver"], logindata["username"])
 
+async def sendMessage(room, responseText):
+    await client.room_send(
+        room_id=room.machine_name,
+        message_type="m.room.message",
+        content={
+            "msgtype": "m.text",
+            "body": responseText
+        }
+    ) 
+
+async def FAQreload(room):
+    urllib.request.urlretrieve("https://github.com/fire219/pine-faq-bot/raw/master/faq.json", "newfaq.json")
+    try:
+        with open('newfaq.json') as faqtestfile:
+            faqtestdata = json.load(faqtestfile)
+        os.replace("newfaq.json", "faq.json")
+        faqdata = faqtestdata
+        await sendMessage(room, "[FAQbot] New FAQ file successfully loaded!")
+    except JSONDecodeError:
+        await sendMessage(room, "[FAQbot] New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
+        
+
 async def message_cb(room, event):
     if (event.body.startswith('!faq')):       
         try:
             if (event.body == "!faq shutdown" and event.sender == "@fire219:matrix.org"):
                 print("shutting down by request")
+                await sendMessage(room, "[FAQbot] Shutting down!")
                 await client.close()
                 sys.exit(0)
-            responseText = faqdata[event.body[5:]]
-            await client.room_send(
-                room_id=room.machine_name,
-                message_type="m.room.message",
-                content={
-                    "msgtype": "m.text",
-                    "body": responseText
-                }
-            ) 
+            if (event.body == "!faq reload"):
+                await sendMessage(room, "[FAQbot] Now pulling latest FAQ file from repository...")
+                await FAQreload(room)
+            else:
+                responseText = faqdata[event.body[5:]]
+                await sendMessage(room, responseText)
         except KeyError:
-            await client.room_send(
-                room_id=room.machine_name,
-                message_type="m.room.message",
-                content={
-                    "msgtype": "m.text",
-                    "body": "No valid response found"
-                }
-            ) 
+            await sendMessage(room, "I could not find a response for your query.")
         
 
 async def main():
