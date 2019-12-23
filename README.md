@@ -23,11 +23,12 @@ After saving this file, the bot is ready to use. As downloaded, your bot will ha
 
 ### Special commands:
 Most !faq commands will simply be looked up within the FAQ listings. However, a few commands are reserved:
-| Command| Description |
-|--|--|
-| !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error. |
-| !faq reload | Downloads and validates latest FAQ file from this repository. |
-| !faq index | Gives an index listing of all currently loaded FAQ queries. |
+
+ Command| Description 
+--|--
+ !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error. 
+ !faq reload | Downloads and validates latest FAQ file from this repository. 
+ !faq index | Gives an index listing of all currently loaded FAQ queries. 
 
 ### License:
 
