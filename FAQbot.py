@@ -25,11 +25,13 @@ client = AsyncClient(logindata["homeserver"], logindata["username"])
 
 async def sendMessage(room, responseText):
     await client.room_send(
-        room_id=room.machine_name,
+        room_id=room.room_id,
         message_type="m.room.message",
         content={
             "msgtype": "m.text",
-            "body": "[FAQbot] " + responseText
+            "format": "org.matrix.custom.html",
+            "body": "[FAQbot] " + responseText,
+            "formatted_body": "[FAQbot] <em>"+responseText+"</em>"
         }
     ) 
 
@@ -53,16 +55,17 @@ async def message_cb(room, event):
                 await sendMessage(room, "Shutting down!")
                 await client.close()
                 sys.exit(0)
-            elif (event.body == "!faq reload"):
+            elif ("!faq reload" in event.body):
                 await sendMessage(room, "Now pulling latest FAQ file from repository...")
                 await FAQreload(room)
-            elif (event.body == "!faq index"):
+            elif ("!faq index" in event.body):
                 allkeys = ""
                 for i in faqdata.keys():
-                    allkeys = allkeys + i
-                await sendMessage(room, "All loaded topics: " + allkeys + " ")
+                    allkeys = allkeys + i + " "
+                await sendMessage(room, "All loaded topics: " + allkeys)
             else:
-                responseText = faqdata[event.body[5:].lower()]
+                parseIndex = event.body.index("!faq")
+                responseText = faqdata[event.body[parseIndex + 5:].lower()]
                 await sendMessage(room, responseText)
         except KeyError:
             await sendMessage(room, "I could not find a response for your query.")
