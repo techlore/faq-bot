@@ -29,7 +29,7 @@ async def sendMessage(room, responseText):
         message_type="m.room.message",
         content={
             "msgtype": "m.text",
-            "body": responseText
+            "body": "[FAQbot] " + responseText
         }
     ) 
 
@@ -40,24 +40,29 @@ async def FAQreload(room):
             faqtestdata = json.load(faqtestfile)
         os.replace("newfaq.json", "faq.json")
         faqdata = faqtestdata
-        await sendMessage(room, "[FAQbot] New FAQ file successfully loaded!")
+        await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
-        await sendMessage(room, "[FAQbot] New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
+        await sendMessage(room, "New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
         
 
 async def message_cb(room, event):
     if (event.body.startswith('!faq')):       
         try:
-            if (event.body == "!faq shutdown" and event.sender == "@fire219:matrix.org"):
+            if (event.body == "!faq shutdown" and event.sender == logindata["botadmin"]):
                 print("shutting down by request")
-                await sendMessage(room, "[FAQbot] Shutting down!")
+                await sendMessage(room, "Shutting down!")
                 await client.close()
                 sys.exit(0)
-            if (event.body == "!faq reload"):
-                await sendMessage(room, "[FAQbot] Now pulling latest FAQ file from repository...")
+            elif (event.body == "!faq reload"):
+                await sendMessage(room, "Now pulling latest FAQ file from repository...")
                 await FAQreload(room)
+            elif (event.body == "!faq index"):
+                allkeys = ""
+                for i in faqdata.keys():
+                    allkeys = allkeys + i
+                await sendMessage(room, "All loaded topics: " + allkeys + " ")
             else:
-                responseText = faqdata[event.body[5:]]
+                responseText = faqdata[event.body[5:].lower()]
                 await sendMessage(room, responseText)
         except KeyError:
             await sendMessage(room, "I could not find a response for your query.")

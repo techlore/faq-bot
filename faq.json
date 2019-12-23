@@ -1,1 +1,12 @@
-{"cats": "meowmeowmeow", "dogs": "woof"}
+{"phoneprice": "The PinePhone costs $149, and always will (barring unforeseen circumstances)",
+"phoneready": "For developers or very knowledgeable users, the PinePhone is ready. For normal users, it will be ready in a few months.",
+"phoneos": "The BraveHeart batch of PinePhones will not have an OS installed. You will have to install one yourself to an SD card. Full production models will have a default OS (not yet chosen).",
+"phoneandroid": "The PinePhone can run Android. There is a port of Replicant in development, and maybe others in the future. However, this is not the main focus of the device and will likely be less supported.",
+"phoneandroidapp": "If you run Android on your PinePhone, it should run most apps with no issues. On Linux, projects such as Anbox exist, but these are less reliable and should not be depended on.",
+"phoneswitches": "The switches on the back of the PinePhone are hardware disconnects, not software.",
+"timelinux": "Please read this forum article for information about Linux on PineTime: https://forum.pine64.org/showthread.php?tid=8112",
+"timedefault": "Please read this post about the default OS on the PineTime: https://forum.pine64.org/showthread.php?tid=8114&pid=51139#pid51139",
+"timedev": "These links are a good place to start with PineTime development: https://wiki.pine64.org/index.php/PineTime https://forum.pine64.org/showthread.php?tid=8143",
+"pbpshipping": "The current timeline for Pinebook Pro shipping is Dec 24th for ISO units, Dec 31st through Jan 5th for ANSI. Further shipping will continue after February (Chinese New Year).",
+"pbpdeadpixel": "The chance of your Pinebook having dead pixels on its screen is very low. However, it is not impossible -- and since Pine sells these devices at no-profit prices, it cannot afford to refund/replace all devices with minor defects.",
+"pbpos": "Which OS you should run depends on what you prefer. Well supported options are Debian (default on all PBPs), Ubuntu, and Manjaro."}
