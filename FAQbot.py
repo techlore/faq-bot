@@ -14,6 +14,7 @@ import json
 import sys
 import urllib.request
 import os
+import re
 
 with open('login.json') as loginfile:
     logindata = json.load(loginfile)
@@ -48,6 +49,10 @@ async def FAQreload(room):
         
 
 async def message_cb(room, event):
+    bridge_prefix = r'^\[.\] <[^>]+> '
+    if (re.match(bridge_prefix, event.body) is not None):
+        event.body = re.sub(bridge_prefix, '', event.body)
+
     if (event.body.startswith('!faq')):       
         try:
             if (event.body == "!faq shutdown" and event.sender == logindata["botadmin"]):
@@ -59,10 +64,7 @@ async def message_cb(room, event):
                 await sendMessage(room, "Now pulling latest FAQ file from repository...")
                 await FAQreload(room)
             elif ("!faq index" in event.body):
-                allkeys = ""
-                for i in faqdata.keys():
-                    allkeys = allkeys + i + " "
-                await sendMessage(room, "All loaded topics: " + allkeys)
+                await sendMessage(room, "All loaded topics: " + ", ".join(faqdata.keys()))
             else:
                 parseIndex = event.body.index("!faq")
                 responseText = faqdata[event.body[parseIndex + 5:].lower()]
