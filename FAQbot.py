@@ -2,7 +2,7 @@
 Pine64 Chat FAQ Bot
 A very simple Matrix bot built on the matrix-nio API
 
-Made by Matthew Petry (fireTwoOneNine/fire219)
+Made by Matthew Petry (fireTwoOneNine/fire219) and contributors
 Based on matrix-nio code examples
 
 See LICENSE.md
@@ -42,7 +42,7 @@ async def FAQreload(room):
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
         os.replace("newfaq.json", "faq.json")
-        faqdata = faqtestdata
+        global faqdata = faqtestdata
         await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
         await sendMessage(room, "New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
