@@ -14,6 +14,7 @@ import json
 import sys
 import urllib.request
 import os
+import re
 
 with open('login.json') as loginfile:
     logindata = json.load(loginfile)
@@ -48,6 +49,10 @@ async def FAQreload(room):
         
 
 async def message_cb(room, event):
+    bridge_prefix = r'^\[.\] <[^>]+> '
+    if (re.match(bridge_prefix, event.body) is not None):
+        event.body = re.sub(bridge_prefix, '', event.body)
+
     if (event.body.startswith('!faq')):       
         try:
             if (event.body == "!faq shutdown" and event.sender == logindata["botadmin"]):
