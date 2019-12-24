@@ -37,12 +37,13 @@ async def sendMessage(room, responseText):
     ) 
 
 async def FAQreload(room):
+    global faqdata
     urllib.request.urlretrieve("https://github.com/fire219/pine-faq-bot/raw/master/faq.json", "newfaq.json")
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
         os.replace("newfaq.json", "faq.json")
-        global faqdata = faqtestdata
+        faqdata = faqtestdata
         await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
         await sendMessage(room, "New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
