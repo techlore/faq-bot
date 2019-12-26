@@ -64,7 +64,7 @@ async def message_cb(room, event):
             elif ("!faq reload" in event.body):
                 await sendMessage(room, "Now pulling latest FAQ file from repository...")
                 await FAQreload(room)
-            elif ("!faq index" in event.body):
+            elif ("!faq index" in event.body or event.body == "!faq"):
                 await sendMessage(room, "All loaded topics: " + ", ".join(faqdata.keys()))
             else:
                 parseIndex = event.body.index("!faq")
