@@ -10,6 +10,7 @@
 "timelinux": "Please read this forum article for information about Linux on PineTime: https://forum.pine64.org/showthread.php?tid=8112",
 "timedefault": "Please read this post about the default OS on the PineTime: https://forum.pine64.org/showthread.php?tid=8114&pid=51139#pid51139",
 "timedev": "These links are a good place to start with PineTime development: https://wiki.pine64.org/index.php/PineTime https://forum.pine64.org/showthread.php?tid=8143",
+"timecover": "The back cover of the PineTime dev kit is exposed so that you can flash and debug the device with the SWD pins. The main unit and cover does not snap (lock) together. If you want to attach the back cover anyway, you can use glue or tape.",
 "pbpshipping": "The current timeline for Pinebook Pro shipping is Dec 24th for ISO units, Dec 31st through Jan 5th for ANSI. Further shipping will continue after February (Chinese New Year).",
 "pbpdeadpixel": "The chance of your Pinebook having dead pixels on its screen is very low. However, it is not impossible -- and since Pine sells these devices at no-profit prices, it cannot afford to refund/replace all devices with minor defects.",
 "pbpos": "Which OS you should run depends on what you prefer. Well supported options are Debian (default on all PBPs), Ubuntu, and Manjaro."}
