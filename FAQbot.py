@@ -38,7 +38,7 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    urllib.request.urlretrieve("https://github.com/fire219/pine-faq-bot/raw/master/faq.json", "newfaq.json")
+    urllib.request.urlretrieve("https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "newfaq.json")
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
