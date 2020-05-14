@@ -20,7 +20,7 @@ Create the following structure in the file and fill in the relevant blanks:
 
     {"homeserver": "<homeserver URL>", "username": "<@botuser:matrix.org>", "password": "<examplepassword>", "botadmin": "<@you:matrix.org>"}
 
-After saving this file, the bot is ready to use. As downloaded, your bot will have the latest version of the Pine64 chat network's FAQ file within `faq.json`. However, it can easily be edited to fit your needs.
+After saving this file, the bot is ready to use. As downloaded, your bot will have the latest version of the Techlore room FAQ file within `faq.json`. However, it can easily be edited to fit your needs.
 
 ### Special commands:
 Most !faq commands will simply be looked up within the FAQ listings. However, a few commands are reserved:
