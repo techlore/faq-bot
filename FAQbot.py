@@ -12,7 +12,6 @@ import asyncio
 from nio import (AsyncClient, RoomMessageText)
 import json
 import sys
-import urllib.request
 import os
 import re
 
@@ -38,7 +37,7 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    urllib.request.urlretrieve("https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "newfaq.json")
+    os.system('curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json > newfaq.json')
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
