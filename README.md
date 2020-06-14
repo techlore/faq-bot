@@ -1,4 +1,4 @@
-# Pine64 FAQ Bot
+# Techlore FAQ Bot
 ## A simple question-response Matrix bot, built on matrix-nio API
 
 Built out of necessity, this easy to use and manage Matrix bot will give recorded responses from its JSON file.
