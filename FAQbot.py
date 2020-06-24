@@ -13,6 +13,7 @@ from nio import (AsyncClient, RoomMessageText)
 import json
 import sys
 import os
+import subprocess
 import re
 
 with open('login.json') as loginfile:
@@ -37,7 +38,7 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    os.system('curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json > newfaq.json')
+    subprocess.call("curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "-o newfaq.json")
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
