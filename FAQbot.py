@@ -12,8 +12,8 @@ import asyncio
 from nio import (AsyncClient, RoomMessageText)
 import json
 import sys
-import os
-import subprocess
+from os import replace
+from subprocess import call
 import re
 
 with open('login.json') as loginfile:
@@ -38,11 +38,11 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    subprocess.call("curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "-o newfaq.json")
+    call("curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "-o newfaq.json")
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
-        os.replace("newfaq.json", "faq.json")
+        replace("newfaq.json", "faq.json")
         faqdata = faqtestdata
         await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
