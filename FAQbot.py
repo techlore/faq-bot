@@ -38,7 +38,7 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    call("curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "-o newfaq.json")
+    call(["curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", "-o newfaq.json"])
     try:
         with open('newfaq.json') as faqtestfile:
             faqtestdata = json.load(faqtestfile)
