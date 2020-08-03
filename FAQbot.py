@@ -35,7 +35,7 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    proc = await asyncio.create_subprocess_shell(["curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", stdout=asyncio.subprocess.PIPE)
+    proc = await asyncio.create_subprocess_shell("curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", stdout=asyncio.subprocess.PIPE)
     stdout, stderr = await proc.communicate()
     try:
         faqtest = json.loads(stdout.)
