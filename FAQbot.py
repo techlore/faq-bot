@@ -38,7 +38,7 @@ async def FAQreload(room):
     proc = await asyncio.create_subprocess_shell("curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", stdout=asyncio.subprocess.PIPE)
     stdout, stderr = await proc.communicate()
     try:
-        faqtest = json.loads(stdout.)
+        faqtest = json.loads(stdout.decode())
         with open("faq.json", mode='w') as faq_file:
             json.dump(faqtest, faq_file)
         faqdata = faqtest
