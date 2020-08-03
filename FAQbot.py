@@ -11,9 +11,6 @@ See LICENSE.md
 import asyncio
 from nio import (AsyncClient, RoomMessageText)
 import json
-import sys
-from os import replace
-from subprocess import run
 import re
 
 with open('login.json') as loginfile:
@@ -38,12 +35,13 @@ async def sendMessage(room, responseText):
 
 async def FAQreload(room):
     global faqdata
-    run(["curl", "-s", "https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json"], stdout=open("newfaq.json", mode='w'))
+    proc = await asyncio.create_subprocess_shell(["curl -s https://gitlab.com/FantasyCookie17/techlore-faq-bot/raw/master/faq.json", stdout=asyncio.subprocess.PIPE)
+    stdout, stderr = await proc.communicate()
     try:
-        with open('newfaq.json') as faqtestfile:
-            faqtestdata = json.load(faqtestfile)
-        replace("newfaq.json", "faq.json")
-        faqdata = faqtestdata
+        faqtest = json.loads(stdout.)
+        with open("faq.json", mode='w') as faq_file:
+            json.dump(faqtest, faq_file)
+        faqdata = faqtest
         await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
         await sendMessage(room, "New FAQ file failed to load. Please check the JSON file on the repository for malformation.")
