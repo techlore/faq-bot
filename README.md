@@ -1,4 +1,11 @@
 # Techlore FAQ Bot
+
+## An FAQ bot for the [Techlore Matrix room](https://matrix.to/)
+
+[Techlore](https://techlore.tech) is a channel on different video platforms, as well as a community on privacy and security. This bot is used for quickly answering common questions. While I (FantasyCookie17) happen to host this repo, this is a community project. The bot ideally represents the consensus of the community, thus pull requests are very welcome.
+
+Below you will find the original documentation by fireTwoOneNine:
+
 ## A simple question-response Matrix bot, built on matrix-nio API
 
 Built out of necessity, this easy to use and manage Matrix bot will give recorded responses from its JSON file.
