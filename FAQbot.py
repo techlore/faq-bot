@@ -37,7 +37,7 @@ async def sendMessage(room, responseText):
 async def FAQupdate(room):
     global faqdata
     await asyncio.create_subprocess_shell("git pull")
-    await sendMessage("Pulled from repository. Run `!faq shutdown` if I am running as an init service and you want to apply changes to the source code.")
+    await sendMessage(room, "Pulled from repository. Run `!faq shutdown` if I am running as an init service and you want to apply changes to the source code.")
     try:
         faqtest = json.loads(stdout.decode())
         with open("faq.json") as faqtest:
