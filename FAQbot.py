@@ -3,6 +3,7 @@ Pine64 Chat FAQ Bot
 A very simple Matrix bot built on the matrix-nio API
 
 Made by Matthew Petry (fireTwoOneNine/fire219) and contributors
+This version is maintained and developed by FantasyCookie17
 Based on matrix-nio code examples
 
 See LICENSE.md
@@ -33,14 +34,14 @@ async def sendMessage(room, responseText):
         }
     ) 
 
-async def FAQreload(room):
+async def FAQupdate(room):
     global faqdata
-    proc = await asyncio.create_subprocess_shell("curl -s https://codeberg.org/FantasyCookie17/techlore-faq-bot/raw/branch/master/faq.json", stdout=asyncio.subprocess.PIPE)
-    stdout, stderr = await proc.communicate()
+    await asyncio.create_subprocess_shell("git pull")
+    await sendMessage("Pulled from repository. Run `!faq shutdown` if I am running as an init service and you want to apply changes to the source code.")
     try:
         faqtest = json.loads(stdout.decode())
-        with open("faq.json", mode='w') as faq_file:
-            json.dump(faqtest, faq_file)
+        with open("faq.json") as faqtest:
+            json.load(faqtest)
         faqdata = faqtest
         await sendMessage(room, "New FAQ file successfully loaded!")
     except JSONDecodeError:
@@ -59,9 +60,9 @@ async def message_cb(room, event):
                 await sendMessage(room, "Shutting down!")
                 await client.close()
                 sys.exit(0)
-            elif ("!faq reload" in event.body):
-                await sendMessage(room, "Now pulling latest FAQ file from repository...")
-                await FAQreload(room)
+            elif ("!faq update" in event.body):
+                await sendMessage(room, "Pulling latest changes from repository...")
+                await FAQupdate(room)
             elif ("!faq index" in event.body or event.body == "!faq"):
                 await sendMessage(room, "All loaded topics: " + ", ".join(faqdata.keys()))
             else:
