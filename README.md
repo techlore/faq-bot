@@ -4,7 +4,7 @@
 
 [Techlore](https://techlore.tech) is a channel on different video platforms, as well as a community on privacy and security. This bot is used for quickly answering common questions. While I (FantasyCookie17) happen to host this repo, this is a community project. The bot ideally represents the consensus of the community, thus pull requests are very welcome.
 
-Below you will find the original documentation by fireTwoOneNine:
+Below you will find the original documentation by fireTwoOneNine, with slight modifications to fit this custom fork:
 
 ## A simple question-response Matrix bot, built on matrix-nio API
 
@@ -35,7 +35,7 @@ Most !faq commands will simply be looked up within the FAQ listings. However, a 
  Command| Description 
 --|--
  !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error. 
- !faq reload | Downloads and validates latest FAQ file from this repository. 
+ !faq update | `git pull`s in the current directory. This both updates the FAQ file and, if you shut it down subsequently, allows you to run the latest version of the source code.
  !faq index | Gives an index listing of all currently loaded FAQ queries. 
 
 ### License:
