@@ -1,10 +1,26 @@
-# Techlore FAQ Bot
+<div align="center">
+<h1>Techlore FAQ Bot</h1>
+<p>
+	<em>An FAQ Bot for Techlore's Discord and Matrix Channels.</em>
+</p>
+<p>
+<a href="https://github.com/techlore/faq-bot/pulls">
+	<img src="https://img.shields.io/github/issues-pr/techlore/faq-bot?style=for-the-badge">
+</a>
+<a href="https://discord.gg/Xd7baMSpqS">
+	<img src="https://img.shields.io/discord/422332274323750922?label=Discord&logo=discord&logoColor=white&style=for-the-badge">
+</a>
+<a href="https://matrix.to/#/+techlore-official:matrix.org">
+	<img src="https://img.shields.io/matrix/techlore:matrix.org?label=Matrix&logo=matrix&server_fqdn=matrix.org&style=for-the-badge">
+</a>
+</p>
+</div>
 
-## An FAQ bot for the [Techlore Matrix room](https://matrix.to/)
+## About this bot
 
-[Techlore](https://techlore.tech) is a channel on different video platforms, as well as a community on privacy and security. This bot is used for quickly answering common questions. While I (FantasyCookie17) happen to host this repo, this is a community project. The bot ideally represents the consensus of the community, thus pull requests are very welcome.
+This bot was originally conceived by (community member and moderator) [FantasyCookie17](https://fantasycookie17.cf) as a way to quickly answer common questions asked in our online communities. This is a community project, with answers ideally representing the consensus of the community. Thus, pull requests are very welcome. Questions and answers can be added to [`faq.json`](/faq.json).
 
-Below you will find the original documentation by fireTwoOneNine, with slight modifications to fit this custom fork:
+This bot is a fork of [@fire219/pine-faq-bot](https://github.com/fire219/pine-faq-bot), and below you will find the original documentation, with slight modifications to fit this custom fork:
 
 ## A simple question-response Matrix bot, built on matrix-nio API
 
@@ -32,26 +48,26 @@ After saving this file, the bot is ready to use. As downloaded, your bot will ha
 ### Special commands:
 Most !faq commands will simply be looked up within the FAQ listings. However, a few commands are reserved:
 
- Command| Description 
+ Command| Description
 --|--
- !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error. 
+ !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error.
  !faq update | `git pull`s in the current directory. This both updates the FAQ file and, if you shut it down subsequently, allows you to run the latest version of the source code.
- !faq index | Gives an index listing of all currently loaded FAQ queries. 
+ !faq index | Gives an index listing of all currently loaded FAQ queries.
 
 ### License:
 
     Copyright (c) 2019 Matthew Petry (fireTwoOneNine/fire219)
-    
+
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
     in the Software without restriction, including without limitation the rights
     to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
     copies of the Software, and to permit persons to whom the Software is
     furnished to do so, subject to the following conditions:
-    
+
     The above copyright notice and this permission notice shall be included in all
     copies or substantial portions of the Software.
-    
+
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -59,6 +75,3 @@ Most !faq commands will simply be looked up within the FAQ listings. However, a 
     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
-
-
-
