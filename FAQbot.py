@@ -37,7 +37,7 @@ async def sendMessage(room, responseText):
 async def FAQupdate(room):
     global faqdata
     await asyncio.create_subprocess_shell("git pull")
-    await sendMessage(room, "Pulled from repository. Run `!faq shutdown` if I am running as an init service and you want to apply changes to the source code.")
+    await sendMessage(room, "Pulled from repository.")
     try:
         faqtest = json.loads(stdout.decode())
         with open("faq.json") as faqtest:
@@ -63,14 +63,14 @@ async def message_cb(room, event):
             elif ("!faq update" in event.body):
                 await sendMessage(room, "Pulling latest changes from repository...")
                 await FAQupdate(room)
-            elif ("!faq index" in event.body or event.body == "!faq"):
+            elif (event.body == "!faq"):
                 await sendMessage(room, "All loaded topics: " + ", ".join(faqdata.keys()))
             else:
                 parseIndex = event.body.index("!faq")
                 responseText = faqdata[event.body[parseIndex + 5:].lower()]
                 await sendMessage(room, responseText)
         except KeyError:
-            await sendMessage(room, "I could not find a response for your query.")
+            await sendMessage(room, "The question you requested does not exist.")
         
 
 async def main():
