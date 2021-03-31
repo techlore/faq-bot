@@ -52,7 +52,7 @@ Most !faq commands will simply be looked up within the FAQ listings. However, a 
 --|--
  !faq shutdown | Shuts down the bot. Can only be triggered by `botadmin`, else gives default FAQ error.
  !faq update | `git pull`s in the current directory. This both updates the FAQ file and, if you shut it down subsequently, allows you to run the latest version of the source code.
- !faq index | Gives an index listing of all currently loaded FAQ queries.
+ !faq | Gives an index listing of all currently loaded FAQ queries.
 
 ### License:
 
