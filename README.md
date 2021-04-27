@@ -18,7 +18,7 @@
 
 ## About this bot
 
-This bot was originally conceived by (community member and moderator) [FantasyCookie17](https://fantasycookie17.cf) as a way to quickly answer common questions asked in our online communities. This is a community project, with answers ideally representing the consensus of the community. Thus, pull requests are very welcome. Questions and answers can be added to [`faq.json`](/faq.json).
+This bot was originally conceived by (community member and moderator) [FantasyCookie17](https://artemislena.eu) as a way to quickly answer common questions asked in our online communities. This is a community project, with answers ideally representing the consensus of the community. Thus, pull requests are very welcome. Questions and answers can be added to [`faq.json`](/faq.json).
 
 This bot is a fork of [@fire219/pine-faq-bot](https://github.com/fire219/pine-faq-bot), and below you will find the original documentation, with slight modifications to fit this custom fork:
 
