@@ -34,7 +34,7 @@ Built out of necessity, this easy to use and manage Matrix bot will give recorde
 ### Requirements:
 - Python 3.5+ (uses async/await syntax)
 - matrix-nio library (`pip install matrix-nio`)
-- curl (urllib no longer needed though)
+- Git
 - A user account on a Matrix homeserver
 
 ### Setup:
