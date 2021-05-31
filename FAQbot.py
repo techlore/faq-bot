@@ -53,7 +53,7 @@ async def message_cb(room, event):
     if (re.match(bridge_prefix, event.body) is not None):
         event.body = re.sub(bridge_prefix, '', event.body)
 
-    if (event.body.startswith('!faq')):       
+    if (event.body.startswith('!faq')):
         try:
             if (event.body == "!faq shutdown" and event.sender == logindata["botadmin"]):
                 print("shutting down by request")
