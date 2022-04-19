@@ -7,7 +7,7 @@
 <a href="https://github.com/techlore/faq-bot/pulls">
 	<img src="https://img.shields.io/github/issues-pr/techlore/faq-bot?style=for-the-badge">
 </a>
-<a href="https://discord.gg/Xd7baMSpqS">
+<a href="https://discord.gg/9V5xhJm9ZS">
 	<img src="https://img.shields.io/discord/422332274323750922?label=Discord&logo=discord&logoColor=white&style=for-the-badge">
 </a>
 <a href="https://matrix.to/#/+techlore-official:matrix.org">
